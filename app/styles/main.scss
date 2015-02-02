@@ -196,9 +196,54 @@ header {
 
 .skills-used {
   text-align: left;
-  
+
   span {
     font-weight: bold;
+  }
+}
+
+//================ CONTACT ==================//
+
+.contact {
+  @include outer-container;
+  margin-top: rem(100px);
+  text-align: center;
+  color: #493829;
+}
+
+.social {
+  color: $primary-color;
+  margin: rem(60px) rem(60px) 0 rem(60px);
+  position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: rem(-5px);
+    width: 0;
+    height: rem(2px);
+    background-color: $secondary-color;
+    transition: width .3s;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.fa-arrow-up {
+  color: $secondary-color;
+  float: right;
+  margin: rem(5px) rem(50px) rem(60px) 0;
+  
+  &:hover {
+    color: $primary-color;
   }
 }
 
