@@ -247,6 +247,277 @@ header {
   }
 }
 
+//================ Media Queries ==================//
+
+// Tablet
+.about {
+  $tablet: new-breakpoint(min-width 900px max-width 1110px, 12); 
+
+  p {
+    @include media($tablet) {
+      @include span-columns(10);
+      @include shift(1);
+      text-align: left;
+    }
+  }
+}
+
+.work {
+  $tablet: new-breakpoint(min-width 900px max-width 1110px, 12);
+
+  .section-no-color {
+    
+    .site-info {
+      @include media($tablet) {
+        @include span-columns(5);
+        @include shift(1);
+      }
+    }
+    
+    .img-site-right {
+      @include media($tablet) {
+        @include span-columns(5);
+
+        img {
+          margin: rem(120px) 0 0 rem(30px);
+        }
+      }
+    }
+  }
+
+  .section-color {
+
+    .img-site-left {
+      @include media($tablet) {
+        @include span-columns(5);
+        @include shift(1);
+      }
+    }
+
+    .site-info {
+      @include media($tablet) {
+        @include span-columns(5);
+        margin-left: rem(30px);
+      }
+    }
+  }
+}
+
+// In Between 
+.about {
+  $tablet-1: new-breakpoint(min-width 601px max-width 899px, 12); 
+
+  p {
+    @include media($tablet-1) {
+      @include span-columns(8);
+      @include shift(2);
+      text-align: left;
+    }
+  }
+}
+
+.work {
+  $tablet-1: new-breakpoint(min-width 601px max-width 899px, 12);
+
+  .section-no-color {
+    @include media($tablet-1) {
+      display: none;
+    }
+  }
+
+  .hidden-section-mobile {
+    @include media($tablet-1) {
+      display: block;
+      height: rem(750px);
+    }
+
+    .site-info {
+      @include media($tablet-1) {
+        @include span-columns(8);
+        @include shift(2);
+
+        p {
+          text-align: left;
+        }
+
+        button {
+          @include outer-container;
+          margin: rem(20px) rem(10px);
+        }
+      }
+    }
+
+    .img-site-right {
+      @include media($tablet-1) {
+        @include span-columns(5);
+        @include shift(3);
+
+        img {
+          margin: rem(60px) 0 rem(-110px) rem(40px);
+        }
+      }
+    }
+  }
+
+  .section-color {
+    @include media($tablet-1) {
+      height: rem(750px);
+    }
+
+    .img-site-left {
+      @include media($tablet-1) {
+        @include span-columns(5);
+        @include shift(3);
+
+        img {
+          margin: rem(40px) 0 rem(-110px) rem(40px);
+        }
+      }
+    }
+
+    .site-info {
+      @include media($tablet-1) {
+        @include span-columns(8);
+        @include shift(2);
+
+        p {
+          text-align: left;
+        }
+
+        button {
+          @include outer-container;
+          margin: rem(20px) rem(10px);
+        }
+      }
+    }
+  }
+}
+
+// Mobile 
+header {
+  $mobile: new-breakpoint(max-width 560px 12);
+
+  .main-heading {
+    @include media($mobile) {
+      padding-top: rem(100px);
+
+      h1 {
+        font-size: 2.7em;
+      }
+
+      h2 {
+        font-size: 1.3em;
+      }
+
+      .social-header {
+        width: 5px;
+      } 
+    }
+  }
+}
+ 
+.about {
+  $mobile: new-breakpoint(max-width 600px 12); 
+  @include media($mobile) {
+    padding: rem(50px) 0;
+  }
+
+  p {
+    @include media($mobile) {
+      @include span-columns(10);
+      @include shift(1);
+      text-align: left;
+      font-size: .9em;
+    }
+  }
+}
+
+.work-1 {
+  $mobile: new-breakpoint(max-width 600px 12);
+  @include media($mobile) {
+    margin: rem(70px) 0 rem(20px) 0;
+  } 
+}
+
+.work {
+  $mobile: new-breakpoint(max-width 600px 12);
+
+  .section-no-color {
+    @include media($mobile) {
+      display: none;
+    }
+  }
+
+  .hidden-section-mobile {
+    @include media($mobile) {
+      display: block;
+      height: rem(700px);
+    }
+
+    .site-info {
+      @include media($mobile) {
+        @include span-columns(10);
+        @include shift(1);
+
+        p {
+          text-align: left;
+          font-size: .9em;
+        }
+
+        button {
+          @include outer-container;
+          margin: rem(20px) rem(10px);
+        }
+      }
+    }
+
+    .img-site-right {
+      @include media($mobile) {
+        @include span-columns(6);
+        @include shift(3);
+
+        img {
+          margin: rem(60px) 0 rem(-110px) 0;
+        }
+      }
+    }
+  }
+
+  .section-color {
+    @include media($mobile) {
+      height: rem(700px);
+    }
+    
+    .img-site-left {
+      @include media($mobile) {
+        @include span-columns(6);
+        @include shift(3);
+
+        img {
+          margin: rem(40px) 0 rem(-110px) 0;
+        }
+      }
+    }
+
+    .site-info {
+      @include media($mobile) {
+        @include span-columns(10);
+        @include shift(1);
+
+        p {
+          text-align: left;
+          font-size: .9em;
+        }
+
+        button {
+          @include outer-container;
+          margin: rem(20px) rem(10px);
+        }
+      }
+    }
+  }
+}
+
 //================ TEXTURE ==================//
 
 @mixin texture($gradient-angle, $bg-color-1, $bg-color-2, $texture-number, $inverted) { $texture-list: 
