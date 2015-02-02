@@ -112,6 +112,8 @@ header {
   }
 }
 
+//================ WORK ==================//
+
 .about {
   @include outer-container;
   padding: rem(80px) 0;
@@ -120,6 +122,83 @@ header {
 
   h1 {
     margin: 0;
+  }
+}
+
+.work-1 {
+  margin: rem(130px) 0 rem(20px) 0;
+  text-align: center;
+}
+
+// Section no-color
+.hidden-section-mobile {
+  display: none;
+}
+
+.section-no-color {
+  @include sections();
+
+  .site-info {
+    @include span-columns(6);
+    margin-top: rem(130px);
+    color: $primary-color;
+
+    button {
+      @include btn($primary-color);
+
+      &:hover {
+        background: $secondary-color;
+        transition: all .2s ease-in;
+      }
+    }
+  }
+
+  .img-site-right {
+    @include span-columns(6);
+
+    img {
+      margin: rem(120px) 0 0 rem(55px);
+    }
+  }
+}
+
+// Section color
+.section-color {
+  @include sections();
+
+  .img-site-left {
+    @include span-columns(6);
+      
+    img {
+      margin: rem(120px) rem(55px) 0 0;
+    }
+  }
+
+  .site-info {
+    @include span-columns(6);
+    margin-top: rem(130px);
+    color: #493829;
+    
+    h3 {
+      text-align: left;
+    }
+
+    button {
+      @include btn($secondary-color);
+
+      &:hover {
+        background: $primary-color;
+        transition: all .2s ease-in;
+      }
+    }
+  }
+}
+
+.skills-used {
+  text-align: left;
+  
+  span {
+    font-weight: bold;
   }
 }
 
