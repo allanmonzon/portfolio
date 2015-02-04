@@ -6,6 +6,10 @@
 
 $primary-color: #3a4e63; // Blue
 $secondary-color: #816c5b; // Brown
+$light-color: #fff; // White
+$darker-color: #493829; // Darker Brown
+$social-contact-color: #bfc5ca; // Light Grey
+$section-color: #f7f7f7; // Lighter Grey
 
 //=============== Mixins =================//
 
@@ -14,8 +18,8 @@ $secondary-color: #816c5b; // Brown
   width: rem(100px);
   margin: rem(20px);
   padding: rem(10px);
-  color: #fff;
-  border: 1px solid #fff;
+  color: $light-color;
+  border: 1px solid $light-color;
   border-radius: rem(10px);
 }
 
@@ -31,7 +35,10 @@ html, body {
   width: 100%;
   height: 100%;
   line-height: rem(30px);
-  font-family: "Helvetica";
+}
+
+h1 {
+  font-size: rem(40px);
 }
 
 img {
@@ -45,7 +52,7 @@ li {
 
 a {
   position: relative;
-  color: #fff;
+  color: $light-color;
   text-decoration: none;
 }
 
@@ -54,10 +61,10 @@ a {
 header {
   @include fill-parent;
   background:  url('../images/chair.jpg');
-  @include background-image(linear-gradient(to top, rgba(255, 255, 255, .2) 1%, rgba(255, 255, 255, .2) 102%, #fff), url("/images/chair.jpg"));
+  @include background-image(linear-gradient(to top, rgba(255, 255, 255, .2) 1%, rgba(255, 255, 255, .2) 102%, $light-color), url("../images/chair.jpg"));
   background-size: cover;
   height: 100%;
-  color: #fff;
+  color: $light-color;
 
   .nav {
     @include fill-parent;
@@ -65,12 +72,13 @@ header {
     ul {
       text-align: right;
       margin-top: 0;
-      padding: rem(25px) rem(20px) 0 0;
+      padding: rem(35px) rem(30px) 0 0;
 
       li {
         margin-right: rem(40px);    
         position: relative;
         cursor: pointer;
+        font-size: rem(18px);
 
         &:after {
           content: "";
@@ -80,7 +88,7 @@ header {
           bottom: rem(-5px);
           width: 0;
           height: rem(2px);
-          background-color: #fff;
+          background-color: $light-color;
           transition: width .3s;
         }
 
@@ -94,14 +102,14 @@ header {
   .main-heading {
     @include outer-container;
     text-align: center;
-    padding-top: rem(175px);
+    padding-top: rem(160px);
     
     h1 {
       font-size: 5em;
     }
 
     .social-header {
-      color: #fff;
+      color: $light-color;
       margin: rem(10px) rem(20px) 0 rem(20px);
 
       &:hover {
@@ -118,16 +126,30 @@ header {
   @include outer-container;
   padding: rem(80px) 0;
   text-align: center;
-  color: #493829;
+  color: $darker-color;
 
   h1 {
-    margin: 0;
+    margin: 0 0 rem(20px) 0;
+  }
+
+  p {
+    @include span-columns(10);
+    @include shift(1);
+  }
+
+  a {
+    color: $primary-color;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
   }
 }
 
 .work-1 {
   margin: rem(130px) 0 rem(20px) 0;
   text-align: center;
+  color: $primary-color;
 }
 
 // Section no-color
@@ -142,6 +164,14 @@ header {
     @include span-columns(6);
     margin-top: rem(130px);
     color: $primary-color;
+
+    a {
+      color: $secondary-color;
+
+      &:hover {
+        color: darken($secondary-color, 10%);
+      }
+    }
 
     button {
       @include btn($primary-color);
@@ -177,7 +207,7 @@ header {
   .site-info {
     @include span-columns(6);
     margin-top: rem(130px);
-    color: #493829;
+    color: $darker-color;
     
     h3 {
       text-align: left;
@@ -204,64 +234,79 @@ header {
 
 //================ CONTACT ==================//
 
+.contact-bkg {
+  background: $primary-color;
+}
+
 .contact {
   @include outer-container;
-  margin-top: rem(100px);
+  padding-top: rem(80px);
   text-align: center;
-  color: #493829;
+  color: $light-color;
+
+  h1 {
+    margin: 0 0 25px 0;
+  }
+
+  .contact-social {
+    display: inline-block;
+    margin: 0 5px;
+  }
 }
 
 .social {
-  color: $primary-color;
   margin: rem(60px) rem(60px) 0 rem(60px);
-  position: relative;
-
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: rem(-5px);
-    width: 0;
-    height: rem(2px);
-    background-color: $secondary-color;
-    transition: width .3s;
-  }
-
-  &:hover:after {
-    width: 100%;
-  }
+  color: $social-contact-color;
 
   &:hover {
-    color: $secondary-color;
+    color: $light-color;
   }
 }
 
-.fa-arrow-up {
-  color: $secondary-color;
-  float: right;
-  margin: rem(5px) rem(50px) rem(60px) 0;
-  
-  &:hover {
-    color: $primary-color;
+.up-arrow {
+  background: $primary-color;
+  width: 100%;
+  height: 90px;
+  margin-top: 30px;
+
+  .arrow {
+    float: right;
+    margin-right: 60px;
+
+    &:hover {
+      color: $social-contact-color;
+    } 
   }
 }
 
 //================ Media Queries ==================//
 
-// Tablet
+//----- Tablet -----//
+// Header
+header {
+  $tablet: new-breakpoint(min-width 900px max-width 1110px, 12);
+
+  .main-heading {
+    @include media($tablet) {
+      padding-top: rem(110px); 
+    }
+  }
+}
+
+// About
 .about {
   $tablet: new-breakpoint(min-width 900px max-width 1110px, 12); 
 
   p {
     @include media($tablet) {
-      @include span-columns(10);
-      @include shift(1);
+      @include span-columns(8);
+      @include shift(2);
       text-align: left;
     }
   }
 }
 
+// Work
 .work {
   $tablet: new-breakpoint(min-width 900px max-width 1110px, 12);
 
@@ -279,7 +324,7 @@ header {
         @include span-columns(5);
 
         img {
-          margin: rem(120px) 0 0 rem(30px);
+          margin: rem(140px) 0 0 rem(30px);
         }
       }
     }
@@ -291,6 +336,10 @@ header {
       @include media($tablet) {
         @include span-columns(5);
         @include shift(1);
+
+        img {
+          margin-top: rem(130px);
+        }
       }
     }
 
@@ -303,7 +352,8 @@ header {
   }
 }
 
-// In Between 
+//----- In Between -----// 
+// About
 .about {
   $tablet-1: new-breakpoint(min-width 601px max-width 899px, 12); 
 
@@ -316,6 +366,7 @@ header {
   }
 }
 
+// Work
 .work {
   $tablet-1: new-breakpoint(min-width 601px max-width 899px, 12);
 
@@ -370,7 +421,7 @@ header {
         @include shift(3);
 
         img {
-          margin: rem(40px) 0 rem(-110px) rem(40px);
+          margin: rem(60px) 0 rem(-110px) rem(40px);
         }
       }
     }
@@ -393,9 +444,43 @@ header {
   }
 }
 
-// Mobile 
+// Contact 
+.contact {
+  $tablet-1: new-breakpoint(min-width 601px max-width 899px, 12); 
+  
+  .contact-social {
+    @include media($tablet-1) {
+
+      i {
+        margin: 45px 45px;
+      } 
+    }
+  } 
+}
+
+.contact {
+  $contact-1: new-breakpoint(min-width 601px max-width 653px, 12); 
+  
+  .contact-social {
+    @include media($contact-1) {
+
+      i {
+        margin: 45px 38px;
+      } 
+    }
+  } 
+}
+
+//----- Mobile -----// 
+// Header
 header {
   $mobile: new-breakpoint(max-width 560px 12);
+
+  .nav {
+    @include media($mobile) {
+      display: none;
+    }
+  }
 
   .main-heading {
     @include media($mobile) {
@@ -406,20 +491,26 @@ header {
       }
 
       h2 {
-        font-size: 1.3em;
+        font-size: 1.2em;
+        margin-bottom: rem(30px);
       }
-
-      .social-header {
-        width: 5px;
+      
+      i {
+        font-size: rem(29px);
       } 
     }
   }
 }
- 
+
+// About
 .about {
   $mobile: new-breakpoint(max-width 600px 12); 
   @include media($mobile) {
     padding: rem(50px) 0;
+
+    h1 {
+      font-size: rem(35px);
+    }
   }
 
   p {
@@ -432,10 +523,12 @@ header {
   }
 }
 
+// Work
 .work-1 {
   $mobile: new-breakpoint(max-width 600px 12);
   @include media($mobile) {
-    margin: rem(70px) 0 rem(20px) 0;
+    margin: rem(70px) 0 rem(50px) 0;
+    font-size: rem(35px);
   } 
 }
 
@@ -477,7 +570,7 @@ header {
         @include shift(3);
 
         img {
-          margin: rem(60px) 0 rem(-110px) 0;
+          margin: rem(40px) 0 rem(-110px) 0;
         }
       }
     }
@@ -514,6 +607,48 @@ header {
           margin: rem(20px) rem(10px);
         }
       }
+    }
+  }
+}
+
+// Contact
+.contact {
+  $mobile: new-breakpoint(max-width 600px 12); 
+  @include media($mobile) {
+      padding-top: rem(55px);
+    }
+  
+  h1 {
+    @include media($mobile) {
+      font-size: rem(35px);
+      margin-bottom: 40px;
+    }
+  }
+
+  .contact-social {
+    @include media($mobile) {
+
+      i {
+        font-size: rem(40px);
+        margin: 20px 15px;
+      } 
+    }
+  } 
+}
+
+.up-arrow {
+  $mobile: new-breakpoint(max-width 600px 12);
+  @include media($mobile) {
+    margin-top: 40px;
+    height: 70px;
+
+    .arrow {
+      margin-right: 20px;
+    }
+
+    i {
+      font-size: rem(45px);
+      margin-right: -20px;
     }
   }
 }
@@ -620,8 +755,8 @@ header {
 }
 
 .texture {
-  $texture-top-background: lighten(#f7f7f7, 1%);
-  $texture-bottom-background: darken(#f7f7f7, 1%);
+  $texture-top-background: lighten($section-color, 1%);
+  $texture-bottom-background: darken($section-color, 1%);
 
   .texture-normal {
     // gradient color 1, gradient color 2, gradient angle, texture-number, 0=inverted or 1=normal  
