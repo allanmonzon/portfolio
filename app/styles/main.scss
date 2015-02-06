@@ -5,7 +5,7 @@
 //=============== Font Variables =================//
 
 $primary-color: #3a4e63; // Blue
-$secondary-color: #816c5b; // Brown
+$secondary-color: #a29888; // Brown #816c5b
 $light-color: #fff; // White
 $darker-color: #493829; // Darker Brown
 $social-contact-color: #bfc5ca; // Light Grey
@@ -61,7 +61,7 @@ a {
 header {
   @include fill-parent;
   background:  url('../images/chair.jpg');
-  @include background-image(linear-gradient(to top, rgba(255, 255, 255, .2) 1%, rgba(255, 255, 255, .2) 102%, $light-color), url("../images/chair.jpg"));
+  @include background-image(linear-gradient(to top, rgba(150, 150, 150, .2) 1%, rgba(150, 150, 150, .2) 102%, $light-color), url("../images/chair.jpg"));
   background-size: cover;
   height: 100%;
   color: $light-color;
@@ -214,7 +214,7 @@ header {
     }
 
     button {
-      @include btn($secondary-color);
+      @include btn(darken($secondary-color, 8%));
 
       &:hover {
         background: $primary-color;
